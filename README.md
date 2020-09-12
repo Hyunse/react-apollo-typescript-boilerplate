@@ -1,1 +1,1 @@
-## React Apollo Typescript Client
+## React Apollo Typescript Boilerplate

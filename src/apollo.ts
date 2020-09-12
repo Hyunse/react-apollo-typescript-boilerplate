@@ -7,14 +7,14 @@ const client = new ApolloClient({
     defaults: {
       auth: {
         __typename: 'Auth',
-        isLoggendIn: Boolean(localStorage.getItem('jwt')),
+        isLoggedIn: Boolean(localStorage.getItem('jwt')),
       },
     },
     // E - Default States
     // S - Resolvers
     resolvers: {
       Mutation: {
-        logUserIn: (_, { token }, { cache }) => {
+        SignIn: (_, { token }, { cache }) => {
           localStorage.setItem('jwt', token);
           cache.writeData({
             data: {
@@ -26,7 +26,7 @@ const client = new ApolloClient({
           });
           return null;
         },
-        logUserOut: (_, __, { cache }) => {
+        SignOut: (_, __, { cache }) => {
           localStorage.removeItem('jwt');
           cache.writeData({
             data: {
