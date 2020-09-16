@@ -1,10 +1,12 @@
 import React from 'react';
-import { graphql } from 'react-apollo';
 import { IS_LOGGED_IN } from './AppQueries';
 import { ThemeProvider } from 'styled-components';
 import { myTheme } from '../../theme';
+import { useQuery } from 'react-apollo-hooks'
 
-const App = ({ data }: any) => {
+const App = () => {
+  const { data } = useQuery(IS_LOGGED_IN);
+
   return (
     <React.Fragment>
       <ThemeProvider theme={myTheme}>{JSON.stringify(data)}</ThemeProvider>
@@ -12,4 +14,4 @@ const App = ({ data }: any) => {
   );
 };
 
-export default graphql(IS_LOGGED_IN)(App);
+export default App;
