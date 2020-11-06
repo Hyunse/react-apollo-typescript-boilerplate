@@ -1,9 +1,12 @@
-import { gql } from 'apollo-boost';
+import { gql } from '@apollo/client';
 
-export const IS_LOGGED_IN = gql`
+export const GET_ALL_USER = gql`
   {
-    auth {
-      isLoggedIn @client
+    GetAllUser {
+      users {
+        id
+        name
+      }
     }
   }
 `;
